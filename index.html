@@ -3,35 +3,39 @@
 <style>
 @keyframes slideDown {
   0% {
-    transform: translateY(-100%);
+    -webkit-transform: translateY(-200%);
   }
   100% {
-    transform: translateY(0);
+    -webkit-transform: translateY(0);
   }
 }
 @keyframes slideLeft {
   0% {
-    transform: translateX(-250%);
+    -webkit-transform: translateX(-400%);
   }
   100% {
-    transform: translateX(0);
+   -webkit-transform: translateX(0);
   }
+}
+@keyframes fadeIn{
+	from { opacity: 0; }
+    to   { opacity: 1; }
 }
 @font-face{
 font-family: mcFont;
 src: url('fonts/Minecrafter.Alt.ttf');
 }
 header {  
-  animation: 1s ease-out 0s 1 slideDown;
-  
-  background: #333;
-  padding: 30px;
-}
+  animation: 3s ease-out 0s 1 slideDown; 
+  background: white url("images/stone.png") repeat;
+  padding: 16px;
+ }
 body { 
-    background: #54340b url("images/bg.png") no-repeat 100% 90%; 
+    background: white url("images/bg.png") no-repeat 100% 90%; 
 }
 a{
 font-family:'mcFont';
+color : white;
 }
 h1{
 font-family:'mcFont';
@@ -41,6 +45,18 @@ text-shadow: 1px 1px 2px black;
 p{
 font-family:'mcFont';
 font-size:13px;
+}
+
+img {
+    width: 60px;
+    height: 60px;
+    background: red;
+    -webkit-transition: width 1s, height 1s, -webkit-transform 1s;
+}
+img:hover {
+    width: 100px;
+    height: 100px;
+    -webkit-transform: rotate(180deg);
 }
 </style>
 <header>
@@ -52,8 +68,9 @@ font-size:13px;
 <br>
 <br>
 <body>
-<h1>M H A F Y -</h1>
-<h1 style="animation: 1s ease-out 0s 1 slideLeft; position: absolute; top : 124px; left: 230px;">1 0 1 6</h1>
+<h1 style="animation: fadeIn 2s;">M H A F Y -</h1>
+<h1 style="animation: 1s ease-out 0s 1 slideLeft; position: absolute; top : 95px; left: 230px;">1 0 1 6</h1>
 <p>My Official Website</p>
 </body>
+<img src = "" style="position: absolute; top : 395px; left: 230px;"></img>
 </html>
