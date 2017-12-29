@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <style>
-@keyframes slideInFromLeft {
+@keyframes slideDown {
   0% {
     transform: translateY(-100%);
   }
@@ -9,26 +9,51 @@
     transform: translateY(0);
   }
 }
-@font-face{
-	font-family: myFancyFont;
-	src: url('myFancyFont.ttf'),
-	url('myFancyFont.eot');
+@keyframes slideLeft {
+  0% {
+    transform: translateX(-250%);
+  }
+  100% {
+    transform: translateX(0);
+  }
 }
-header{  
-	background: #333;
-	padding: 30px;
+@font-face{
+font-family: mcFont;
+src: url('fonts/Minecrafter.Alt.ttf');
+}
+header {  
+  animation: 1s ease-out 0s 1 slideDown;
+  
+  background: #333;
+  padding: 30px;
+}
+body { 
+    background: #54340b url("images/bg.png") no-repeat 100% 90%; 
+}
+a{
+font-family:'mcFont';
+}
+h1{
+font-family:'mcFont';
+color : #e8e3e3;
+text-shadow: 1px 1px 2px black;
+}
+p{
+font-family:'mcFont';
+font-size:13px;
 }
 </style>
 <header>
-<a href="#"style="text-align:right; float: right;">Home</a>
-<a href="#"style="text-align:right; float: right;">Mods</a>
-<a href="#"style="text-align:right; float: right;">Support</a>
-<a href="#"style="text-align:right; float: right;">Donate</a>
+  <a href="#">Home</a>
+  <a href="#">Mods</a>
+  <a href="#">Support</a>
+  <a href="#">Donate</a>
 </header>
 <br>
 <br>
 <body>
-<h1>Hello World</h1>
-<p>I'm hosted with GitHub Pages.</p>
+<h1>M H A F Y -</h1>
+<h1 style="animation: 1s ease-out 0s 1 slideLeft; position: absolute; top : 124px; left: 230px;">1 0 1 6</h1>
+<p>My Official Website</p>
 </body>
 </html>
