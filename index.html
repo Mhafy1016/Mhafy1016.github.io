@@ -3,13 +3,17 @@
 <style>
 @keyframes slideInFromLeft {
   0% {
-    transform: translateX(-100%);
+    transform: translateY(-100%);
   }
   100% {
-    transform: translateX(0);
+    transform: translateY(0);
   }
 }
-
+@font-face{
+font-family: myFancyFont;
+src: url('myFancyFont.ttf'),
+url('myFancyFont.eot');
+}
 header {  
   /* This section calls the slideInFromLeft animation we defined above */
   animation: 1s ease-out 0s 1 slideInFromLeft;
