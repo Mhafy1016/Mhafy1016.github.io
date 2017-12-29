@@ -1,6 +1,30 @@
 <!DOCTYPE html>
 <html>
 <body>
+<style>
+@keyframes slideInFromLeft {
+  0% {
+    transform: translateX(-100%);
+  }
+  100% {
+    transform: translateX(0);
+  }
+}
+
+header {  
+  /* This section calls the slideInFromLeft animation we defined above */
+  animation: 1s ease-out 0s 1 slideInFromLeft;
+  
+  background: #333;
+  padding: 30px;
+}
+</style>
+<header>
+  <a href="#">Home</a>
+  <a href="#">About</a>
+  <a href="#">Products</a>
+  <a href="#">Contact</a>
+</header>
 <h1>Hello World</h1>
 <p>I'm hosted with GitHub Pages.</p>
 </body>
