@@ -8,8 +8,10 @@
 	src: url('fonts/Minecrafter.Alt.ttf');
 }
 
+/* H e a d e r */
 #panel{
 	font-family:'mcFont';
+	padding:16px;
 }
 #panel a{
 	color:black;
@@ -19,8 +21,20 @@
 	color:gray;
 }
 
+/* B o d y */
 body{
 	background: url('images/bg-tiles.png') repeat;
+}
+#logo{
+
+}
+#logo img{
+	position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translateX(-50%) translateY(-50%);
+    max-width: 20%;
+    max-height: 20%;
 }
 
 </style>
@@ -33,5 +47,8 @@ body{
 	</div>
 </head>
 <body>
+	<div id="logo">
+		<img src="images/logo-original.png"></img>
+	</div>
 </body>
 </html>
