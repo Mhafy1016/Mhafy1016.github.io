@@ -1,141 +1,37 @@
 <!DOCTYPE html>
 <html>
+<title>Mhafy1016</title>
+<meta name="viewport" content="width=device-width, initial-scale=0.5">
 <style>
-@keyframes slideDown {
-  0%{-webkit-transform: translateY(-200%);}
-  100%{-webkit-transform: translateY(0);}
-}
-@keyframes slideUpFadeIn {
-  0%{opacity: 0; -webkit-transform: translateY(200%);}
-  100%{opacity: 1; -webkit-transform: translateY(0);}
-}
-@keyframes slideDownFadeIn {
-  0%{opacity: 0; -webkit-transform: translateY(-200%);}
-  100%{opacity: 1; -webkit-transform: translateY(0);}
-}
-@keyframes slideLeftFadeIn {
-  0%{opacity: 0; -webkit-transform: translateX(-300%);}
-  100%{opacity: 1; -webkit-transform: translateX(0);}
-}
-@keyframes slideRightFadeIn {
-  0%{opacity: 0; -webkit-transform: translateX(300%);}
-  100%{opacity: 1; -webkit-transform: translateX(0);}
-}
-
-@keyframes spinLarge {
-  0%{-webkit-transition: width 1s, height 1s, -webkit-transform 1s;}
-  100%{width: 60px;height: 60px;-webkit-transform: rotate(180deg);}
-}
-@keyframes spinLargeToLeft {
-  0%{-webkit-transition: width 1s, height 1s; -webkit-transform: translateX(-200%);}
-  100%{width: 60px;height: 60px;-webkit-transform: rotate(180deg) translateX(0);}
-}
-@keyframes spinLargeToRight {
- 0%{-webkit-transition: width 1s, height 1s; -webkit-transform: translateX(200%);}
-  100%{width: 60px;height: 60px;-webkit-transform: rotate(180deg) translateX(0);}
-}
-@keyframes largeFadeIn{
-	from{ opacity: 0; width:480px; height:480px;}
-    to{ opacity: 1;width: 180px;height: 180px; }
-}
-
-@keyframes slideLeft {
-  0%{-webkit-transform: translateX(-400%);}
-  100%{-webkit-transform: translateX(0);}
-}
-@keyframes fadeInLarge{
-	from{ opacity: 0;font-size:100px;}
-    to{ opacity: 1; }
-}
-@keyframes fadeIn{
-	from{ opacity: 0;}
-    to{ opacity: 1; }
-}
-@keyframes fadeOut{
-	from{ opacity: 1; }
-    to{ opacity: 0; }
-}
-
 @font-face{
-font-family: mcFont;
-src: url('fonts/Minecrafter.Alt.ttf');
-}
-header {  
-  animation: 3s ease-out 0s 1 slideDown; 
-  background: url("images/chain.png") repeat;
-  position:relative;
-  left:-60px;
-  width:200%;
-  padding: 16px;
- }
- #hbars{
- 	font-family:'mcFont';
-	margin-left:60px;
- }
- #hbars a{
-color : black;
- }
-  #hbars a:hover{
-color : white;
- }
-body { 
-    background: white url("images/bg-tiles.png"); 
-	background-position: center;
-    background-repeat: repeat;
+	font-family: mcFont;
+	src: url('fonts/Minecrafter.Alt.ttf');
 }
 
-#logo{
-position:relative;
-top:150px;
+#panel{
+	font-family:'mcFont';
 }
-#logo img{
-animation: largeFadeIn 1s;
-width:180px;
-height:180px;
+#panel a{
+	color:black;
+	padding-left:20px;
 }
-.dash{
-font-family:'mcFont';
-color:white;
-font-size:30px;
-position: absolute;
-top: 49%;
-left: 49.7%;
-animation: fadeIn 3s;
+#panel a:hover{
+	color:gray;
 }
-.ten{
-font-family:'mcFont';
-color:white;
-font-size:30px;
-position: absolute;
-top: 50%;
-left: 45.5%;
-animation: slideLeftFadeIn 3s;
-}
-.sixteen{
-font-family:'mcFont';
-color:white;
-font-size:30px;
-position: absolute;
-top: 50%;
-right: 45.5%;
-animation: slideRightFadeIn 3s;
+
+body{
+	background: url('images/bg-tiles.png') repeat;
 }
 
 </style>
-<header>
-<div id="hbars">
-  <a href="#">Home</a>
-  <a href="#">Mods</a>
-  <a href="#">Support</a>
-  <a href="#">Donate</a>
-</div>
-</header>
-<body onload="init()">
-<div id="logo"style="text-align:center;">
-<div class="dash">-</div>
-<div class="ten">1 0</div>
-<div class="sixteen">1 6</div>
-<img src="images/logo-original.png"></img>
-</div>
+<head>
+	<div id="panel">
+		<a href="#">FB</a>
+		<a href="#">TWITTER</a>
+		<a href="#">INSTAGRAM</a>
+		<a href="#">YOUTUBE</a>
+	</div>
+</head>
+<body>
 </body>
 </html>
