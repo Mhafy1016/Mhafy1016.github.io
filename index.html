@@ -1,54 +1,86 @@
 <!DOCTYPE html>
 <html>
-<title>Mhafy1016</title>
-<meta name="viewport" content="width=device-width, initial-scale=0.5">
-<style>
-@font-face{
-	font-family: mcFont;
-	src: url('fonts/Minecrafter.Alt.ttf');
-}
+	<head>
+		<title> Ruins </title>
+	</head>
+	
+	<body bgcolor = "black" onload = "init()">
+		<canvas id = "background"> Canvas not Supported </canvas>
+		<canvas id = "middle"> Canvas not Supported </canvas>
+		<canvas id = "foreground"> Canvas not Supported </canvas>
+	<style>
+	canvas {
+    padding: 0;
+    margin: auto;
+    display: block;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+	
+	cursor: url(''), none;
+	}
+	
+	p {
+	color : white;
+	
+	}
+	
+	</style>
+		<script src = "script/script.js"></script>
+		<script src = "script/gui.js"></script>
+		<script>
+			
+			var bg = document.getElementById("background");
+			var mid = document.getElementById("middle");
+			var fg = document.getElementById("foreground");
+			
+			var W = 480, H = 630;
+			
+			bg.width = W, bg.height = H;
+			mid.width = W, mid.height = H;
+			fg.width = W, fg.height = H;
+			
+			var ctx_back = bg.getContext("2d");
+			var ctx_mid = mid.getContext("2d");
+			var ctx_front = fg.getContext("2d");
+			
+				ctx_back.mozImageSmoothingEnabled = false;
+				ctx_back.webkitImageSmoothingEnabled = false;
+				ctx_back.msImageSmoothingEnabled = false;
+				ctx_back.imageSmoothingEnabled = false;
+				
+				ctx_mid.mozImageSmoothingEnabled = false;
+				ctx_mid.webkitImageSmoothingEnabled = false;
+				ctx_mid.msImageSmoothingEnabled = false;
+				ctx_mid.imageSmoothingEnabled = false;
+				
+				ctx_front.mozImageSmoothingEnabled = false;
+				ctx_front.webkitImageSmoothingEnabled = false;
+				ctx_front.msImageSmoothingEnabled = false;
+				ctx_front.imageSmoothingEnabled = false;
 
-/* H e a d e r */
-#panel{
-	font-family:'mcFont';
-	padding:16px;
-}
-#panel a{
-	color:black;
-	padding-left:20px;
-}
-#panel a:hover{
-	color:gray;
-}
+			function init(){
 
-/* B o d y */
-body{
-	background: url('images/bg-tiles.png') repeat;
-}
-#logo{
-
-}
-#logo img{
-	position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translateX(-50%) translateY(-50%);
-    max-width: 20%;
-    max-height: 20%;
-}
-
-</style>
-<head>
-	<div id="panel">
-		<a href="#">FB</a>
-		<a href="#">TWITTER</a>
-		<a href="#">INSTAGRAM</a>
-		<a href="#">YOUTUBE</a>
-	</div>
-</head>
-<body>
-	<div id="logo">
-		<img src="images/logo-original.png"></img>
-	</div>
-</body>
+				
+				ctx_back.clearRect(0, 0, W, H);
+				ctx_mid.clearRect(0, 0, W, H);
+				ctx_front.clearRect(0, 0, W, H);
+				
+				
+				
+				
+				window.requestAnimationFrame(init);
+				
+				updates();
+			}
+			
+			
+			
+			
+		</script>
+		<p id = "txt"></p>
+		<p id = "xy"></p>
+	</body>
 </html>
