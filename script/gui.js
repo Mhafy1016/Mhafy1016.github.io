@@ -1,3 +1,67 @@
+
+
+var imageNames = [
+	"sprites/cursor.png",
+	"sprites/projectile.png",
+	"sprites/smoke.png",
+	"sprites/ship.png",
+	"sprites/sprite.png",
+	
+	"sprites/enemies/gurk.png",
+	"sprites/enemies/gurk-sprite.png",
+	
+	"sprites/carrier/carrier.png",
+	"sprites/carrier/sprite.png",
+	
+	"sprites/background/gurk.png"
+
+];
+
+var loaded = 0;
+var image = [];
+var img;
+var imgCount = 0;
+var loadFinish = false;
+var fileExists = true;
+
+function loadImages(){
+	if(fileExists){
+		fileExists = false;
+		img = new Image();
+		img.onload = ifExist;
+		img.onerror = ifDoesntExist;
+		img.src = imageNames[imgCount];
+	}
+	
+	loaded = 100 * (imgCount/imageNames.length);
+}
+
+
+function ifExist(){
+	image.push(img);
+	imgCount += 1;
+	fileExists = true;
+}
+
+function ifDoesntExist(){
+	//alert("File Missing ");
+	loadFinish = true;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 ////////// M E N U /////////
 
 

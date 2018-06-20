@@ -73,7 +73,12 @@
 				
 				window.requestAnimationFrame(init);
 				
-				updates();
+				if(loaded >= 100){
+					updates();
+				}else{
+					loadImages();
+					document.getElementById("txt").innerHTML = loaded+"%";
+				}
 			}
 			
 			

@@ -70,7 +70,7 @@ var updates = function(){
 	
 		stage.start(AREA.GURK);
 
-		backImage.draw("gurk");
+		backImage.draw();
 	
 		setTimeout(function(){
 			if(!spawnBoss){
@@ -247,12 +247,9 @@ var stage = {
 ///////////// B A C K - G R O U N D ////////////
 
 var backImage = {
-	image : new Image(),
 	y1 : 0,
 	y2 : 0,
-	draw : function(area){
-		this.image.src = "sprites/background/"+area+".png";
-		
+	draw : function(){
 		if(!pause){
 			this.y1 += 0.5;
 			this.y2 += 05;
@@ -265,8 +262,8 @@ var backImage = {
 			}
 		}
 		
-		ctx_back.drawImage(this.image, 0, this.y1);
-		ctx_back.drawImage(this.image, 0, this.y1 - this.image.height);
+		ctx_back.drawImage(image[9], 0, this.y1);
+		ctx_back.drawImage(image[9], 0, this.y1 - image[9].height);
 	}
 }
 
@@ -297,7 +294,6 @@ var player = {
 	
 	blasterCount : 1,
 	
-	image : new Image(),
 	animate : true,
 	animTick : 0,
 	maxAnimTick : 10,
@@ -315,8 +311,7 @@ var player = {
 	explosionCount : 10,
 	
 	draw : function(){
-		this.image.src = "sprites/sprite.png";
-		ctx_mid.drawImage(this.image, this.animation * this.frameWidth, 0, this.frameWidth, this.frameHeight, this.x, this.y, this.frameWidth, this.frameHeight);
+		ctx_mid.drawImage(image[4], this.animation * this.frameWidth, 0, this.frameWidth, this.frameHeight, this.x, this.y, this.frameWidth, this.frameHeight);
 		
 		this.hitSize = (this.frameWidth + this.frameHeight) / 5;
 
@@ -429,7 +424,6 @@ var createEnemy = function(ID, X, Y, STATUS, FORMATION){
 		angle : 0,
 		rndm : (Math.floor(Math.random()*120)+30),
 		
-		image : new Image(),
 		animTick : 0,
 		maxAnimTick : 10,
 		animation : 0,
@@ -452,9 +446,7 @@ var createEnemy = function(ID, X, Y, STATUS, FORMATION){
 				ctx_mid.fillStyle = "rgba(200, 200, 0, 0.5)";
 				ctx_mid.fillRect(this.x, this.y, this.frameWidth, this.frameHeight);
 			}
-			
-			this.image.src = "sprites/enemies/gurk-sprite.png";
-			ctx_mid.drawImage(this.image, this.animation * this.frameWidth, this.col * this.frameHeight, this.frameWidth, this.frameHeight, this.x, this.y, this.frameWidth, this.frameHeight);
+			ctx_mid.drawImage(image[6], this.animation * this.frameWidth, this.col * this.frameHeight, this.frameWidth, this.frameHeight, this.x, this.y, this.frameWidth, this.frameHeight);
 			
 			
 			
@@ -517,7 +509,7 @@ var createEnemy = function(ID, X, Y, STATUS, FORMATION){
 		
 		explode : function(){
 			for(var i = 0; i < (Math.random()*10)+5; i++){
-				createDebris(this.x + (this.frameWidth / 2), this.y + (this.frameHeight / 2), (Math.random()*10)+3, "none", this.image, 5, 360, Math.random());
+				createDebris(this.x + (this.frameWidth / 2), this.y + (this.frameHeight / 2), (Math.random()*10)+3, "none", image[6], 5, 360, Math.random());
 				createDebris(this.x + (this.frameWidth / 2), this.y + (this.frameHeight / 2), (Math.random()*10)+3, "lime", "none", (Math.random()*5)+1, 360, Math.random());
 			}
 		}
@@ -748,7 +740,6 @@ var playSound = function(SRC, VOLUME, ID){
 
 var carrier = function(X, Y, ID){
 	var item = {
-		image : new Image(),
 		frameWidth : 64,
 		frameHeight : 32,
 		animTick : 0,
@@ -779,8 +770,7 @@ var carrier = function(X, Y, ID){
 			
 				this.y += 5;
 			
-				this.image.src = "sprites/carrier/sprite.png";
-				ctx_mid.drawImage(this.image, this.animation * this.frameWidth, 0, this.frameWidth, this.frameHeight, this.x, this.y, this.frameWidth, this.frameHeight);
+				ctx_mid.drawImage(image[8], this.animation * this.frameWidth, 0, this.frameWidth, this.frameHeight, this.x, this.y, this.frameWidth, this.frameHeight);
 			
 				//ctx_mid.fillStyle = "red";
 				//ctx_mid.fillRect(this.x, this.y, 5, 15);
@@ -981,7 +971,6 @@ var createEBullet = function(X, Y, SPEED, DAMAGE, COLOR, ID, TARGETX, TARGETY, D
 		color : COLOR,
 		id : ID,
 		
-		image : new Image(),
 		animTick : 0,
 		maxAnimTick : 10,
 		animation : 0,
@@ -1000,8 +989,7 @@ var createEBullet = function(X, Y, SPEED, DAMAGE, COLOR, ID, TARGETX, TARGETY, D
 		angle : 0,		
 		type : TYPE,
 		render : function(){
-			this.image.src = "sprites/projectile.png";
-			ctx_mid.drawImage(this.image, this.animation * this.frameWidth, 0, this.frameWidth, this.frameHeight, this.x - 8, this.y, this.frameWidth, this.frameHeight);
+			ctx_mid.drawImage(image[1], this.animation * this.frameWidth, 0, this.frameWidth, this.frameHeight, this.x - 8, this.y, this.frameWidth, this.frameHeight);
 			
 			if(showHitBoxes){
 				ctx_mid.fillStyle = "rgba(0, 0, 200, 0.5)";
@@ -1322,15 +1310,13 @@ function createText(txt, x, y, size, color, align){
 //////// C O N T R O L S /////////
 
 var mouse = {
-	image : new Image(),
 	mx : 0,
 	my : 0,
 	cx : 0,
 	cy : 0,
 	click : false,
 	draw : function(){
-		this.image.src = "sprites/cursor.png";
-		ctx_front.drawImage(this.image, this.mx - 440, this.my - 7);
+		ctx_front.drawImage(image[0], this.mx - 440, this.my - 7);
 	}
 }
 
