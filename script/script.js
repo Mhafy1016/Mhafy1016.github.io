@@ -1020,7 +1020,7 @@ var createEBullet = function(X, Y, SPEED, DAMAGE, COLOR, ID, TARGETX, TARGETY, D
 		
 		explode : function(){
 			for(var i = 0; i < (Math.random()*3)+5; i++){
-				createDebris(this.x, this.y, 5, "none", this.image, 5, 360, Math.random());
+				createDebris(this.x, this.y, 5, "none", image[1], 5, 360, Math.random());
 			}
 		}
 	}
@@ -1086,7 +1086,7 @@ var updateEntities = function(){
 	else if(player.y >= H-(player.frameHeight/ 2)){
 		player.y = H-(player.frameHeight/ 2);
 	}
-	
+	//document.getElementById("txt").innerHTML = "";
 	
 	for(var enemyBullet in eClip){
 		
@@ -1106,6 +1106,7 @@ var updateEntities = function(){
 				if(player.status < 0){
 					playSound('sound/pop.wav', 1, Math.random());
 				}
+				//document.getElementById("txt").innerHTML = "HIT!";
 			}
 		}
 			
