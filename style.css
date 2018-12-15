@@ -1,0 +1,51 @@
+
+#header{
+	margin-top: 1%;
+	height: 5vw;
+	text-align:	center;
+	font-size: 1.5vw;
+}
+
+#loading{
+	position: fixed;
+	top: 50%;
+	left: 50%;
+	/* bring your own prefixes */
+	transform: translate(-50%, -50%);
+}
+
+.ui>a{
+	position: relative;
+	float: right;
+	color: blue;
+	padding: 1%;
+}
+#UI_Header{
+	position: absolute;
+	top: 2%;
+	height: 5vw;
+	width: 99%;
+}
+#UI_Layout, #UI_Layout_front, #UI{
+	position: absolute;
+	width: 70vw;
+	height: 38vw;
+	margin: 1% 15%;
+	
+}
+
+.mainButton{
+	position: absolute;
+	width: 7vw;
+	height: 7.5vw;
+	margin-left: 77.5vw;
+}
+
+canvas{
+	image-rendering: optimizeSpeed;
+	image-rendering: -moz-crisp-edges;
+	image-rendering: -webkit-optimize-contrast;
+	image-rendering: -o-crisp-edges;
+	image-rendering: optimize-contrast;
+	-ms-interpolation-mode: nearest-neighbor;
+}
