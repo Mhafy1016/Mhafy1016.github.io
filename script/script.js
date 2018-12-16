@@ -34,12 +34,12 @@ var maps = document.getElementsByClassName("map");
 var libs = document.getElementsByClassName("lib");
 
 function init(){
-	ctx_header.mozImageSmoothingEnabled = false;
+	ctx_header.imageSmoothingEnabled = false;
 	ctx_header.webkitImageSmoothingEnabled = false;
 	ctx_header.msImageSmoothingEnabled = false;
 	ctx_header.imageSmoothingEnabled = false;
 	for(var i=0; i<ctx_menu.length; i++){
-		ctx_menu[i].mozImageSmoothingEnabled = false;
+		ctx_menu[i].imageSmoothingEnabled = false;
 		ctx_menu[i].webkitImageSmoothingEnabled = false;
 		ctx_menu[i].msImageSmoothingEnabled = false;
 		ctx_menu[i].imageSmoothingEnabled = false;
