@@ -1,7 +1,7 @@
 
 
 const header_canvas = document.getElementById("UI_Header");
-header_canvas.width = 374, header_canvas.height = 32;
+header_canvas.width = 720, header_canvas.height = 40;
 const ctx_header = header_canvas.getContext("2d");
 const ctx_menu = [document.getElementById("UI_Layout").getContext("2d"), document.getElementById("UI_Layout_front").getContext("2d")];
 const ctx_content = document.getElementById("UI_Content").getContext("2d")
@@ -34,7 +34,10 @@ var maps = document.getElementsByClassName("map");
 var libs = document.getElementsByClassName("lib");
 
 function init(){
-	
+	ctx_header.mozImageSmoothingEnabled = false;
+	ctx_header.webkitImageSmoothingEnabled = false;
+	ctx_header.msImageSmoothingEnabled = false;
+	ctx_header.imageSmoothingEnabled = false;
 	for(var i=0; i<ctx_menu.length; i++){
 		ctx_menu[i].mozImageSmoothingEnabled = false;
 		ctx_menu[i].webkitImageSmoothingEnabled = false;
@@ -60,11 +63,11 @@ function init(){
 		
 		if( firstLoad === false ){
 			firstLoad = true;
-			mainBtn.push(new drawBitmap(WIDTH-152, 144*0, 152, 144, ctx_menu, 1, image[2][0], new Border(8, 8, 8, 8, 2)));
-			mainBtn.push(new drawBitmap(WIDTH-152, 144*1, 152, 144, ctx_menu, 0, image[5][0], new Border(8, 8, 8, 8, 2)));
-			mainBtn.push(new drawBitmap(WIDTH-152, 144*2, 152, 144, ctx_menu, 0, image[5][0], new Border(8, 8, 8, 8, 2)));
-			mainBtn.push(new drawBitmap(WIDTH-152, 144*3, 152, 144, ctx_menu, 0, image[5][0], new Border(8, 8, 8, 8, 2)));
-			mainBtn.push(new drawBitmap(WIDTH-152, 144*4, 152, 144, ctx_menu, 0, image[7][0], new Border(8, 8, 8, 8, 2)));
+			mainBtn.push(new drawBitmap(WIDTH-152, 144*0, 152, 144, ctx_menu, 1, image[0][0], new Border(8, 8, 8, 8, 2), new ImagePart(32, 0, 22, 24)));
+			mainBtn.push(new drawBitmap(WIDTH-152, 144*1, 152, 144, ctx_menu, 0, image[0][0], new Border(8, 8, 8, 8, 2), new ImagePart(32, 72, 22, 24)));
+			mainBtn.push(new drawBitmap(WIDTH-152, 144*2, 152, 144, ctx_menu, 0, image[0][0], new Border(8, 8, 8, 8, 2), new ImagePart(32, 72, 22, 24)));
+			mainBtn.push(new drawBitmap(WIDTH-152, 144*3, 152, 144, ctx_menu, 0, image[0][0], new Border(8, 8, 8, 8, 2), new ImagePart(32, 72, 22, 24)));
+			mainBtn.push(new drawBitmap(WIDTH-152, 144*4, 152, 144, ctx_menu, 0, image[0][0], new Border(8, 8, 8, 8, 2), new ImagePart(54, 24, 22, 24)));
 		}
 		
 		drawLayout();
@@ -79,7 +82,7 @@ function init(){
 
 function drawLayout(){
 	//Header
-		new drawBitmap(0, 0, header_canvas.width, header_canvas.height, ctx_header, 0, image[0][0], new Border(4, 4, 4, 4, 1)).draw();
+		new drawBitmap(0, 0, header_canvas.width, header_canvas.height, ctx_header, 0, image[0][0], new Border(8, 8, 8, 8, 1), new ImagePart(0, 32, 32, 32)).draw();
 	
 	//Main Layout
 		
@@ -95,13 +98,13 @@ function drawLayout(){
 		ctx_menu[1].fillRect((((WIDTH-124)/2)-(((24-(page.length*.2))*page.length)/2))+((24-(page.length*.2))*currentPage), HEIGHT-52, 12, 12);
 		
 		
-		new drawBitmap((WIDTH-152)+44, (144*0)+40, 64, 64, ctx_menu, 1, image[8][0]).draw();
-		new drawBitmap((WIDTH-152)+44, (144*1)+40, 64, 64, ctx_menu, 1, image[8][1]).draw();
-		new drawBitmap((WIDTH-152)+44, (144*2)+40, 64, 64, ctx_menu, 1, image[8][2]).draw();
-		new drawBitmap((WIDTH-152)+44, (144*3)+40, 64, 64, ctx_menu, 1, image[8][3]).draw();
-		new drawBitmap((WIDTH-152)+44, (144*4)+40, 64, 64, ctx_menu, 1, image[8][4]).draw();
+		new drawBitmap((WIDTH-152)+44, (144*0)+40, 64, 64, ctx_menu, 1, image[1][0], null, new ImagePart(0, 0, 64, 64)).draw();
+		new drawBitmap((WIDTH-152)+44, (144*1)+40, 64, 64, ctx_menu, 1, image[1][0], null, new ImagePart(64, 0, 64, 64)).draw();
+		new drawBitmap((WIDTH-152)+44, (144*2)+40, 64, 64, ctx_menu, 1, image[1][0], null, new ImagePart(128, 0, 64, 64)).draw();
+		new drawBitmap((WIDTH-152)+44, (144*3)+40, 64, 64, ctx_menu, 1, image[1][0], null, new ImagePart(192, 0, 64, 64)).draw();
+		new drawBitmap((WIDTH-152)+44, (144*4)+40, 64, 64, ctx_menu, 1, image[1][0], null, new ImagePart(256, 0, 64, 64)).draw();
 		
-		new drawBitmap(0, 0, WIDTH-136, HEIGHT, ctx_menu, 0, image[1][0], new Border(8, 8, 8, 8, 2)).draw();
+		new drawBitmap(0, 0, WIDTH-136, HEIGHT, ctx_menu, 0, image[0][0], new Border(8, 8, 8, 8, 2), new ImagePart(0, 64, 32, 32)).draw();
 	
 	ctx_menu[0].fillStyle = 'gray';
 	ctx_menu[0].fillRect(24, 24, WIDTH-184, 608);
@@ -119,7 +122,7 @@ function drawLayout(){
 	}
 	info =  slideTimer+" / 300, "+slide;
 	
-	new drawBitmap(0, 0, WIDTH, HEIGHT, ctx_content, 0, image[1][0], new Border(8, 8, 8, 8, 2)).draw();
+	new drawBitmap(0, 0, WIDTH, HEIGHT, ctx_content, 0, image[0][0], new Border(8, 8, 8, 8, 2), new ImagePart(0, 64, 32, 32)).draw();
 }
 
 
@@ -131,7 +134,7 @@ function refreshContainer(){
 	page[currentPage].style.display = "block";
 }
 
-function drawBitmap(x, y, width, height, ctx, layer, img, border){
+function drawBitmap(x, y, width, height, ctx, layer, img, border, part){
 	this.x = x;
 	this.y = y;
 	this.width = width;
@@ -139,33 +142,45 @@ function drawBitmap(x, y, width, height, ctx, layer, img, border){
 	this.layer = layer;
 	this.img = img;
 	this.border = border;
+	this.part = part || new ImagePart();
 	this.ctx = ctx;
 	this.draw = function(){
+		if( this.part.width <= 0 ){
+			this.part.width = this.img.width;
+		}
+		if( this.part.height <= 0 ){
+			this.part.height = this.img.height;
+		}
 		if( Array.isArray(this.ctx) ){
 			if( this.border != null && this.border != 'undefined' ){
-				this.ctx[this.layer].drawImage(this.img, 0, 0, border.left, border.top, this.x, this.y, border.left*border.scale, border.top*border.scale);
-				this.ctx[this.layer].drawImage(this.img, border.left, 0, img.width-(border.left+border.right), border.top, this.x+(border.left*border.scale), this.y, this.width-((border.left*border.scale)+(border.right*border.scale)), border.top*border.scale);
-				this.ctx[this.layer].drawImage(this.img, img.width-border.right, 0, border.right, border.top, this.x+(this.width-(border.right*border.scale)), this.y, border.left*border.scale, border.top*border.scale);
-				this.ctx[this.layer].drawImage(this.img, 0, border.top, border.left, img.height-(border.top+border.bottom), this.x, this.y+(border.top*border.scale), border.left*border.scale, this.height-((border.top*border.scale)+(border.bottom*border.scale)));
-				this.ctx[this.layer].drawImage(this.img, border.left, border.right, img.width-(border.left+border.right), img.height-(border.top+border.bottom), this.x+(border.left*border.scale), this.y+(border.top*border.scale), this.width-((border.left*border.scale)+(border.right*border.scale)), this.height-((border.top*border.scale)+(border.bottom*border.scale)));
-				this.ctx[this.layer].drawImage(this.img, img.width-border.right, border.top, border.right, img.height-(border.top+border.bottom), this.x+(this.width-(border.right*border.scale)), this.y+(border.top*border.scale), border.left*border.scale, this.height-((border.top*border.scale)+(border.bottom*border.scale)));
-				this.ctx[this.layer].drawImage(this.img, 0, img.height-border.bottom, border.left, border.bottom, this.x, this.y+(this.height-(border.bottom*border.scale)), border.left*border.scale, border.bottom*border.scale);
-				this.ctx[this.layer].drawImage(this.img, border.left, img.height-border.bottom, img.width-(border.left+border.right), border.bottom, this.x+(border.left*border.scale), this.y+(this.height-(border.bottom*border.scale)), this.width-((border.left*border.scale)+(border.right*border.scale)), border.bottom*border.scale);
-				this.ctx[this.layer].drawImage(this.img, img.width-border.right, img.height-border.bottom, border.right, border.bottom, this.x+(this.width-(border.right*border.scale)), this.y+(this.height-(border.bottom*border.scale)), border.left*border.scale, border.bottom*border.scale);
+				this.ctx[this.layer].drawImage(this.img, this.part.x, this.part.y, border.left, border.top, this.x, this.y, border.left*border.scale, border.top*border.scale);
+				this.ctx[this.layer].drawImage(this.img, this.part.x+border.left, this.part.y, this.part.width-(border.left+border.right), border.top, this.x+(border.left*border.scale), this.y, this.width-((border.left*border.scale)+(border.right*border.scale)), border.top*border.scale);
+				this.ctx[this.layer].drawImage(this.img, (this.part.x+this.part.width)-border.right, this.part.y, border.right, border.top, this.x+(this.width-(border.right*border.scale)), this.y, border.left*border.scale, border.top*border.scale);
+				this.ctx[this.layer].drawImage(this.img, this.part.x, this.part.y+border.top, border.left, this.part.height-(border.top+border.bottom), this.x, this.y+(border.top*border.scale), border.left*border.scale, this.height-((border.top*border.scale)+(border.bottom*border.scale)));
+				this.ctx[this.layer].drawImage(this.img, this.part.x+border.left, this.part.y+border.right, this.part.width-(border.left+border.right), this.part.height-(border.top+border.bottom), this.x+(border.left*border.scale), this.y+(border.top*border.scale), this.width-((border.left*border.scale)+(border.right*border.scale)), this.height-((border.top*border.scale)+(border.bottom*border.scale)));
+				this.ctx[this.layer].drawImage(this.img, (this.part.x+this.part.width)-border.right, this.part.y+border.top, border.right, this.part.height-(border.top+border.bottom), this.x+(this.width-(border.right*border.scale)), this.y+(border.top*border.scale), border.left*border.scale, this.height-((border.top*border.scale)+(border.bottom*border.scale)));
+				this.ctx[this.layer].drawImage(this.img, this.part.x, (this.part.y+this.part.height)-border.bottom, border.left, border.bottom, this.x, this.y+(this.height-(border.bottom*border.scale)), border.left*border.scale, border.bottom*border.scale);
+				this.ctx[this.layer].drawImage(this.img, this.part.x+border.left, (this.part.y+this.part.height)-border.bottom, (this.part.width)-(border.left+border.right), border.bottom, this.x+(border.left*border.scale), this.y+(this.height-(border.bottom*border.scale)), this.width-((border.left*border.scale)+(border.right*border.scale)), border.bottom*border.scale);
+				this.ctx[this.layer].drawImage(this.img, (this.part.x+this.part.width)-border.right, (this.part.y+this.part.height)-border.bottom, border.right, border.bottom, this.x+(this.width-(border.right*border.scale)), this.y+(this.height-(border.bottom*border.scale)), border.left*border.scale, border.bottom*border.scale);
 
 			} else {
-				this.ctx[this.layer].drawImage(this.img, this.x, this.y, this.width, this.height);
+				this.ctx[this.layer].drawImage(this.img, this.part.x, this.part.y, this.part.width, this.part.height, this.x, this.y, this.width, this.height);
 			}
 		} else {
-			this.ctx.drawImage(this.img, 0, 0, border.left, border.top, this.x, this.y, border.left*border.scale, border.top*border.scale);
-			this.ctx.drawImage(this.img, border.left, 0, img.width-(border.left+border.right), border.top, this.x+(border.left*border.scale), this.y, this.width-((border.left*border.scale)+(border.right*border.scale)), border.top*border.scale);
-			this.ctx.drawImage(this.img, img.width-border.right, 0, border.right, border.top, this.x+(this.width-(border.right*border.scale)), this.y, border.left*border.scale, border.top*border.scale);
-			this.ctx.drawImage(this.img, 0, border.top, border.left, img.height-(border.top+border.bottom), this.x, this.y+(border.top*border.scale), border.left*border.scale, this.height-((border.top*border.scale)+(border.bottom*border.scale)));
-			this.ctx.drawImage(this.img, border.left, border.right, img.width-(border.left+border.right), img.height-(border.top+border.bottom), this.x+(border.left*border.scale), this.y+(border.top*border.scale), this.width-((border.left*border.scale)+(border.right*border.scale)), this.height-((border.top*border.scale)+(border.bottom*border.scale)));
-			this.ctx.drawImage(this.img, img.width-border.right, border.top, border.right, img.height-(border.top+border.bottom), this.x+(this.width-(border.right*border.scale)), this.y+(border.top*border.scale), border.left*border.scale, this.height-((border.top*border.scale)+(border.bottom*border.scale)));
-			this.ctx.drawImage(this.img, 0, img.height-border.bottom, border.left, border.bottom, this.x, this.y+(this.height-(border.bottom*border.scale)), border.left*border.scale, border.bottom*border.scale);
-			this.ctx.drawImage(this.img, border.left, img.height-border.bottom, img.width-(border.left+border.right), border.bottom, this.x+(border.left*border.scale), this.y+(this.height-(border.bottom*border.scale)), this.width-((border.left*border.scale)+(border.right*border.scale)), border.bottom*border.scale);
-			this.ctx.drawImage(this.img, img.width-border.right, img.height-border.bottom, border.right, border.bottom, this.x+(this.width-(border.right*border.scale)), this.y+(this.height-(border.bottom*border.scale)), border.left*border.scale, border.bottom*border.scale);
+			if( this.border != null && this.border != 'undefined' ){
+				this.ctx.drawImage(this.img, this.part.x, this.part.y, border.left, border.top, this.x, this.y, border.left*border.scale, border.top*border.scale);
+				this.ctx.drawImage(this.img, this.part.x+border.left, this.part.y, this.part.width-(border.left+border.right), border.top, this.x+(border.left*border.scale), this.y, this.width-((border.left*border.scale)+(border.right*border.scale)), border.top*border.scale);
+				this.ctx.drawImage(this.img, (this.part.x+this.part.width)-border.right, this.part.y, border.right, border.top, this.x+(this.width-(border.right*border.scale)), this.y, border.left*border.scale, border.top*border.scale);
+				this.ctx.drawImage(this.img, this.part.x, this.part.y+border.top, border.left, this.part.height-(border.top+border.bottom), this.x, this.y+(border.top*border.scale), border.left*border.scale, this.height-((border.top*border.scale)+(border.bottom*border.scale)));
+				this.ctx.drawImage(this.img, this.part.x+border.left, this.part.y+border.right, this.part.width-(border.left+border.right), this.part.height-(border.top+border.bottom), this.x+(border.left*border.scale), this.y+(border.top*border.scale), this.width-((border.left*border.scale)+(border.right*border.scale)), this.height-((border.top*border.scale)+(border.bottom*border.scale)));
+				this.ctx.drawImage(this.img, (this.part.x+this.part.width)-border.right, this.part.y+border.top, border.right, this.part.height-(border.top+border.bottom), this.x+(this.width-(border.right*border.scale)), this.y+(border.top*border.scale), border.left*border.scale, this.height-((border.top*border.scale)+(border.bottom*border.scale)));
+				this.ctx.drawImage(this.img, this.part.x, (this.part.y+this.part.height)-border.bottom, border.left, border.bottom, this.x, this.y+(this.height-(border.bottom*border.scale)), border.left*border.scale, border.bottom*border.scale);
+				this.ctx.drawImage(this.img, this.part.x+border.left, (this.part.y+this.part.height)-border.bottom, (this.part.width)-(border.left+border.right), border.bottom, this.x+(border.left*border.scale), this.y+(this.height-(border.bottom*border.scale)), this.width-((border.left*border.scale)+(border.right*border.scale)), border.bottom*border.scale);
+				this.ctx.drawImage(this.img, (this.part.x+this.part.width)-border.right, (this.part.y+this.part.height)-border.bottom, border.right, border.bottom, this.x+(this.width-(border.right*border.scale)), this.y+(this.height-(border.bottom*border.scale)), border.left*border.scale, border.bottom*border.scale);
+			
+			} else {
+				this.ctx.drawImage(this.img, this.part.x, this.part.y, this.part.width, this.part.height, this.x, this.y, this.width, this.height);
+			}
 		}
 	}
 }
@@ -178,6 +193,12 @@ function Border(left, top, right, bottom, scale){
 	this.scale = scale;
 }
 
+function ImagePart(x, y, width, height){
+	this.x = x | 0;
+	this.y = y | 0;
+	this.width = width | 0;
+	this.height = height | 0;
+}
 
 
 
@@ -199,51 +220,51 @@ function toPage(n){
 
 var mb = document.getElementsByClassName("mainButton");
 mb[0].addEventListener("click", function( event ){
-		mainBtn[0].layer = 1, mainBtn[0].img = image[2][0];
-	mainBtn[1].layer = 0, mainBtn[1].img = image[5][0];
-	mainBtn[2].layer = 0, mainBtn[2].img = image[5][0];
-	mainBtn[3].layer = 0, mainBtn[3].img = image[5][0];
-	mainBtn[4].layer = 0, mainBtn[4].img = image[7][0];
+		mainBtn[0].layer = 1, mainBtn[0].part = new ImagePart(32, 0, 22, 24);
+	mainBtn[1].layer = 0, mainBtn[1].part = new ImagePart(32, 72, 22, 24);
+	mainBtn[2].layer = 0, mainBtn[2].part = new ImagePart(32, 72, 22, 24);
+	mainBtn[3].layer = 0, mainBtn[3].part = new ImagePart(32, 72, 22, 24);
+	mainBtn[4].layer = 0, mainBtn[4].part = new ImagePart(54, 24, 22, 24);
 	page = addons;
 	currentPage = 0;
 	currentTab = "addons";
 }, false);
 mb[1].addEventListener("click", function( event ){
-	mainBtn[0].layer = 0, mainBtn[0].img = image[3][0];
-		mainBtn[1].layer = 1, mainBtn[1].img = image[4][0];
-	mainBtn[2].layer = 0, mainBtn[2].img = image[5][0];
-	mainBtn[3].layer = 0, mainBtn[3].img = image[5][0];
-	mainBtn[4].layer = 0, mainBtn[4].img = image[7][0];
+	mainBtn[0].layer = 0, mainBtn[0].part = new ImagePart(32, 24, 22, 24);
+		mainBtn[1].layer = 1, mainBtn[1].part = new ImagePart(32, 48, 22, 24);
+	mainBtn[2].layer = 0, mainBtn[2].part = new ImagePart(32, 72, 22, 24);
+	mainBtn[3].layer = 0, mainBtn[3].part = new ImagePart(32, 72, 22, 24);
+	mainBtn[4].layer = 0, mainBtn[4].part = new ImagePart(54, 24, 22, 24);
 	page = mods;
 	currentPage = 0;
 	currentTab = "mods";
 }, false);
 mb[2].addEventListener("click", function( event ){
-	mainBtn[0].layer = 0, mainBtn[0].img = image[3][0];
-	mainBtn[1].layer = 0, mainBtn[1].img = image[5][0];
-		mainBtn[2].layer = 1, mainBtn[2].img = image[4][0];
-	mainBtn[3].layer = 0, mainBtn[3].img = image[5][0];
-	mainBtn[4].layer = 0, mainBtn[4].img = image[7][0];
+	mainBtn[0].layer = 0, mainBtn[0].part = new ImagePart(32, 24, 22, 24);
+	mainBtn[1].layer = 0, mainBtn[1].part = new ImagePart(32, 72, 22, 24);
+		mainBtn[2].layer = 1, mainBtn[2].part = new ImagePart(32, 48, 22, 24);
+	mainBtn[3].layer = 0, mainBtn[3].part = new ImagePart(32, 72, 22, 24);
+	mainBtn[4].layer = 0, mainBtn[4].part = new ImagePart(54, 24, 22, 24);
 	page = tPacks;
 	currentPage = 0;
 	currentTab = "tPacks";
 }, false);
 mb[3].addEventListener("click", function( event ){
-	mainBtn[0].layer = 0, mainBtn[0].img = image[3][0];
-	mainBtn[1].layer = 0, mainBtn[1].img = image[5][0];
-	mainBtn[2].layer = 0, mainBtn[2].img = image[5][0];
-		mainBtn[3].layer = 1, mainBtn[3].img = image[4][0];
-	mainBtn[4].layer = 0, mainBtn[4].img = image[7][0];
+	mainBtn[0].layer = 0, mainBtn[0].part = new ImagePart(32, 24, 22, 24);
+	mainBtn[1].layer = 0, mainBtn[1].part = new ImagePart(32, 72, 22, 24);
+	mainBtn[2].layer = 0, mainBtn[2].part = new ImagePart(32, 72, 22, 24);
+		mainBtn[3].layer = 1, mainBtn[3].part = new ImagePart(32, 48, 22, 24);
+	mainBtn[4].layer = 0, mainBtn[4].part = new ImagePart(54, 24, 22, 24);
 	page = maps;
 	currentPage = 0;
 	currentTab = "maps";
 }, false);
 mb[4].addEventListener("click", function( event ){
-	mainBtn[0].layer = 0, mainBtn[0].img = image[3][0];
-	mainBtn[1].layer = 0, mainBtn[1].img = image[5][0];
-	mainBtn[2].layer = 0, mainBtn[2].img = image[5][0];
-	mainBtn[3].layer = 0, mainBtn[3].img = image[5][0];
-		mainBtn[4].layer = 1, mainBtn[4].img = image[6][0];
+	mainBtn[0].layer = 0, mainBtn[0].part = new ImagePart(32, 24, 22, 24);
+	mainBtn[1].layer = 0, mainBtn[1].part = new ImagePart(32, 72, 22, 24);
+	mainBtn[2].layer = 0, mainBtn[2].part = new ImagePart(32, 72, 22, 24);
+	mainBtn[3].layer = 0, mainBtn[3].part = new ImagePart(32, 72, 22, 24);
+		mainBtn[4].layer = 1, mainBtn[4].part = new ImagePart(54, 0, 22, 24);
 	page = libs;
 	currentPage = 0;
 	currentTab = "libs";
@@ -261,15 +282,8 @@ mb[4].addEventListener("click", function( event ){
 
 
 var imageNames = [
-	["assets/",["greyBorder"],".png"],
-	["assets/",["dialog_background_opaque"],".png"],
-	["assets/",["TabRightFrontTopMost"],".png"],
-	["assets/",["TabRightBackTopMost"],".png"],
-	["assets/",["TabRightFront"],".png"],
-	["assets/",["TabRightBack"],".png"],
-	["assets/",["TabRightFrontBottomMost"],".png"],
-	["assets/",["TabRightBackBottomMost"],".png"],
-	["assets/icons/",["addon","mod","textures","map","library"],".png"],
+	["assets/",["sprite-sheet"],".png"],
+	["assets/icons/",["icons"],".png"],
 	["assets/",["loading"],".png"]
 	
 ];
