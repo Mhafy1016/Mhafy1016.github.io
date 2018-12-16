@@ -1,9 +1,12 @@
+@font-face { font-family: MCFont; src: url('font/Mojangles.ttf'); } 
 
 #header{
 	margin-top: 1%;
+	margin-right: 1%;
 	height: 5vw;
 	text-align:	center;
-	font-size: 1.5vw;
+	font-size: 1.3vw;
+	font-family: MCFont;
 }
 
 #loading{
@@ -17,8 +20,11 @@
 .ui>a{
 	position: relative;
 	float: right;
-	color: blue;
-	padding: 1%;
+	color: white;
+	padding: 1.5%;
+}
+.links:hover{
+	color: gray;
 }
 #UI_Header{
 	position: absolute;
@@ -26,7 +32,7 @@
 	height: 5vw;
 	width: 99%;
 }
-#UI_Layout, #UI_Layout_front, #UI{
+#UI_Layout, #UI_Layout_front{
 	position: absolute;
 	width: 70vw;
 	height: 38vw;
@@ -48,4 +54,42 @@ canvas{
 	image-rendering: -o-crisp-edges;
 	image-rendering: optimize-contrast;
 	-ms-interpolation-mode: nearest-neighbor;
+	margin: auto;
+}
+
+#updateContainer{
+	position: absolute;
+	width: 57.3vw;
+	height: 32vw;
+	margin: 2.2% 16.7%;
+}
+.update{
+	width:100%;
+	height:100%;
+	display: none;
+}
+.actionBtn{
+	display: none;
+	position: absolute;
+	font-size: 2vw;
+	color: white;
+	width: 5vw;
+	height: 32vw;
+	margin: 2.2% 16.7%;
+	border-color: rgba(0, 0, 0, .5);
+	background-color: rgba(0, 0, 0, .2);
+}
+.right{
+	margin: 2.2% 69.5%;
+}
+
+#UI_Content{
+	position: absolute;
+	width: 70vw;
+	height: 38vw;
+	margin: 40% 15%;
+}
+
+#footer{
+	margin-top: 84%;
 }
