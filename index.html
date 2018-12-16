@@ -11,18 +11,6 @@
 		<link rel="stylesheet" href="style.css">
 	</head> 
 	<body style="background-color: black;" onload="init()">
-		<?php 
-			if (
-				stristr($ua, "Windows CE") or
-				stristr($ua, "Mobile") ) {
-				$DEVICE_TYPE="MOBILE";
-			}
-			if (isset($DEVICE_TYPE) and $DEVICE_TYPE=="MOBILE") {
-				$location='YOUR-MOBILE-SITE.com/index.php';
-				header ('Location: '.$location);
-				exit;
-			}
-		?> 
 		<img id="loading" src="assets/loading.gif"></img>
 		
 		<canvas id="UI_Header"></canvas>
@@ -77,8 +65,7 @@
 		<canvas id="UI_Content"></canvas>
 		
 		<div id="footer"></div>
-		<script type="text/javascript" src="script/script.js"> SA.redirection_mobile ({
- mobile_url : "urltoredirectto.com",
- });</script>
+		<script type="text/javascript" src="script/script.js"></script>
+		<script type="text/javascript" src="script/redirection-mobile.js"></script>
 	</body>
 </html>

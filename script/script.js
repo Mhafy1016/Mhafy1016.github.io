@@ -1,3 +1,4 @@
+SA.redirection_mobile ({mobile_url : "google.com",});
 
 
 const header_canvas = document.getElementById("UI_Header");
